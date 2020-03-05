@@ -31,8 +31,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/", "index", "/css/*", "/js/*").permitAll()
 		.antMatchers("/api/v1/students/**").hasAnyRole(ApplicationUserRole.ADMIN.name(), ApplicationUserRole.STUDENT.name())
 		.anyRequest().authenticated().and()
-		//.httpBasic();
-		.formLogin();
+		.formLogin().loginPage("/login").permitAll();
 	}
 	
 	@Override
